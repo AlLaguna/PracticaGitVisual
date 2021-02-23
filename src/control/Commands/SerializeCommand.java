@@ -1,0 +1,30 @@
+package control.Commands;
+
+import control.CommandParseException;
+import logic.Game;
+
+public class SerializeCommand extends Command{
+
+	private static final String name = "serialize";
+	private static final String shortcut = "z";
+	private static final String details = "seriali[Z]e";
+	private static final String help = "Serializes the board.\n";
+	
+	public SerializeCommand() {
+		super(name, shortcut, details, help);
+	}
+	
+	public boolean execute(Game game) 
+	{
+		String juegoSerializado = game.serialize();
+		System.out.print(juegoSerializado);
+		return false;
+	}
+
+	public Command parse(String[] commandWords) throws CommandParseException 
+	{
+		return this.parseNoParamsCommand(commandWords);
+	}
+	
+	
+}
